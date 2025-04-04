@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Villa San Antonio - Tu Nuevo Hogar</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">Villa San Antonio</div>
+        <div class="nav-links">
+            <a href="#inicio">Inicio</a>
+            <a href="#caracteristicas">Características</a>
+            <a href="#galeria">Galería</a>
+            <a href="#video">Video</a>
+            <a href="#contacto">Contacto</a>
+        </div>
+        <div class="menu-btn">
+            <i class="fas fa-bars"></i>
+        </div>
+    </nav>
+
+    <header id="inicio" class="hero">
+        <div class="hero-content">
+            <h1>Tu Hogar de Ensueño</h1>
+            <p>Una residencia única que combina elegancia y comodidad</p>
+            <a href="#contacto" class="cta-button">Agendar Visita</a>
+        </div>
+    </header>
+
+    <section id="caracteristicas" class="features">
+        <h2>Características Principales</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <i class="fas fa-home"></i>
+                <h3>Área Total</h3>
+                <p>250m²</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-bed"></i>
+                <h3>Habitaciones</h3>
+                <p>4</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-bath"></i>
+                <h3>Baños</h3>
+                <p>3</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-car"></i>
+                <h3>Garaje</h3>
+                <p>2 plazas</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="galeria" class="gallery">
+        <h2>Galería de Imágenes</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1600596542815-ffad4c153aee9" alt="Fachada de la casa">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c" alt="Sala de estar">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c" alt="Cocina">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1600607687644-9b2d3c3c0c1c" alt="Dormitorio">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d" alt="Baño">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1600607687644-9b2d3c3c0c1c" alt="Jardín">
+            </div>
+        </div>
+    </section>
+
+    <section id="video" class="video-section">
+        <h2>Tour Virtual</h2>
+        <div class="video-container">
+            <iframe 
+                width="100%" 
+                height="600" 
+                src="https://www.youtube.com/embed/Bpr6R05Kke8" 
+                title="Tour Virtual de la Casa" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen>
+            </iframe>
+        </div>
+    </section>
+
+    <section id="contacto" class="contact">
+        <h2>Contacto</h2>
+        <div class="contact-container">
+            <form id="contact-form">
+                <div class="form-group">
+                    <input type="text" id="name" required>
+                    <label for="name">Nombre</label>
+                </div>
+                <div class="form-group">
+                    <input type="email" id="email" required>
+                    <label for="email">Email</label>
+                </div>
+                <div class="form-group">
+                    <input type="tel" id="phone" required>
+                    <label for="phone">Teléfono</label>
+                </div>
+                <div class="form-group">
+                    <textarea id="message" required></textarea>
+                    <label for="message">Mensaje</label>
+                </div>
+                <button type="submit" class="submit-btn">Enviar Mensaje</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Villa San Antonio</h3>
+                <p>Tu hogar de ensueño te espera</p>
+            </div>
+            <div class="footer-section">
+                <h3>Contacto</h3>
+                <p>Email: info@villasanantonio.com</p>
+                <p>Tel: +34 123 456 789</p>
+            </div>
+            <div class="footer-section">
+                <h3>Síguenos</h3>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Villa San Antonio. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html> 
