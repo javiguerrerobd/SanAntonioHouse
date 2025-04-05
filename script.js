@@ -55,33 +55,105 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Gallery modal
-const galleryItems = document.querySelectorAll('.gallery-item');
-const modal = document.createElement('div');
-modal.className = 'modal';
-modal.innerHTML = `
-    <div class="modal-content">
-        <span class="close-modal">&times;</span>
-        <img src="" alt="Imagen ampliada">
-    </div>
-`;
-document.body.appendChild(modal);
+// Gallery Modal Functionality
+document.addEventListener('DOMContentLoaded', () => {
+    const galleryItems = document.querySelectorAll('.gallery-item');
+    const modal = document.querySelector('.gallery-modal');
+    const modalImg = modal.querySelector('img');
+    const closeBtn = modal.querySelector('.modal-close');
+    const prevBtn = modal.querySelector('.modal-prev');
+    const nextBtn = modal.querySelector('.modal-next');
+    let currentIndex = 0;
 
-galleryItems.forEach(item => {
-    item.addEventListener('click', () => {
-        const img = item.querySelector('img');
-        modal.querySelector('img').src = img.src;
-        modal.classList.add('active');
+    // Open modal
+    galleryItems.forEach((item, index) => {
+        item.addEventListener('click', () => {
+            currentIndex = index;
+            updateModalImage();
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
     });
-});
 
-modal.querySelector('.close-modal').addEventListener('click', () => {
-    modal.classList.remove('active');
-});
-
-modal.addEventListener('click', (e) => {
-    if (e.target === modal) {
+    // Close modal
+    closeBtn.addEventListener('click', () => {
         modal.classList.remove('active');
+        document.body.style.overflow = '';
+    });
+
+    // Close modal when clicking outside the image
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    });
+
+    // Previous image
+    prevBtn.addEventListener('click', () => {
+        currentIndex = (currentIndex - 1 + galleryItems.length) % galleryItems.length;
+        updateModalImage();
+    });
+
+    // Next image
+    nextBtn.addEventListener('click', () => {
+        currentIndex = (currentIndex + 1) % galleryItems.length;
+        updateModalImage();
+    });
+
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+        if (!modal.classList.contains('active')) return;
+
+        switch (e.key) {
+            case 'Escape':
+                modal.classList.remove('active');
+                document.body.style.overflow = '';
+                break;
+            case 'ArrowLeft':
+                currentIndex = (currentIndex - 1 + galleryItems.length) % galleryItems.length;
+                updateModalImage();
+                break;
+            case 'ArrowRight':
+                currentIndex = (currentIndex + 1) % galleryItems.length;
+                updateModalImage();
+                break;
+        }
+    });
+
+    // Update modal image
+    function updateModalImage() {
+        const imgSrc = galleryItems[currentIndex].querySelector('img').src;
+        modalImg.src = imgSrc;
+    }
+
+    // Touch swipe support for mobile
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    modal.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+    });
+
+    modal.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipe();
+    });
+
+    function handleSwipe() {
+        const swipeThreshold = 50;
+        const diff = touchStartX - touchEndX;
+
+        if (Math.abs(diff) > swipeThreshold) {
+            if (diff > 0) {
+                // Swipe left
+                currentIndex = (currentIndex + 1) % galleryItems.length;
+            } else {
+                // Swipe right
+                currentIndex = (currentIndex - 1 + galleryItems.length) % galleryItems.length;
+            }
+            updateModalImage();
+        }
     }
 });
 
