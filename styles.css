@@ -57,9 +57,11 @@ body {
 
 .logo {
     font-family: 'Playfair Display', serif;
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     font-weight: 700;
     color: var(--primary-color);
+    letter-spacing: 1px;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
 }
 
 .nav-links a {
@@ -112,8 +114,10 @@ body {
     font-size: 3.5rem;
     margin-bottom: 1rem;
     animation: fadeInUp 1s ease;
-    color: var(--white);
+    color: #FFFFFF;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    letter-spacing: 1px;
+    font-weight: 700;
 }
 
 .hero-content p {
@@ -122,8 +126,9 @@ body {
     animation: fadeInUp 1s ease 0.2s;
     opacity: 0;
     animation-fill-mode: forwards;
-    color: var(--white);
+    color: rgba(255, 255, 255, 0.95);
     text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+    letter-spacing: 0.5px;
 }
 
 .cta-button {
@@ -153,12 +158,43 @@ body {
     background-color: var(--light-bg);
 }
 
-.features h2 {
+.features h2,
+.gallery h2,
+.video-section h2,
+.contact h2 {
     text-align: center;
     margin-bottom: 50px;
-    color: #333;
+    color: var(--primary-color);
     font-size: 2.5rem;
     font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    letter-spacing: 1px;
+    position: relative;
+    padding-bottom: 15px;
+}
+
+.features h2::after,
+.gallery h2::after,
+.video-section h2::after,
+.contact h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: var(--gradient-accent);
+    border-radius: 2px;
+}
+
+.video-section h2 {
+    color: #FFFFFF;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+}
+
+.video-section h2::after {
+    background: var(--secondary-color);
 }
 
 .features-grid {
@@ -238,13 +274,6 @@ body {
 .gallery {
     padding: 5rem 5%;
     background: var(--white);
-}
-
-.gallery h2 {
-    text-align: center;
-    font-family: 'Playfair Display', serif;
-    font-size: 2.5rem;
-    margin-bottom: 3rem;
 }
 
 .gallery-grid {
@@ -373,14 +402,6 @@ body {
     background: var(--gradient-primary);
 }
 
-.video-section h2 {
-    text-align: center;
-    font-family: 'Playfair Display', serif;
-    font-size: 2.5rem;
-    margin-bottom: 3rem;
-    color: var(--white);
-}
-
 .video-container {
     max-width: 1000px;
     margin: 0 auto;
@@ -411,13 +432,6 @@ body {
 .contact {
     padding: 5rem 5%;
     background: var(--light-bg);
-}
-
-.contact h2 {
-    text-align: center;
-    font-family: 'Playfair Display', serif;
-    font-size: 2.5rem;
-    margin-bottom: 3rem;
 }
 
 .contact-container {
@@ -623,17 +637,22 @@ footer {
     /* Mobile Styles */
     .hero-content h1 {
         font-size: 2.5rem;
+        letter-spacing: 0.5px;
     }
 
     .hero-content p {
-        font-size: 1rem;
+        font-size: 1.1rem;
+        letter-spacing: 0.3px;
     }
 
     .features {
         padding: 40px 10px;
     }
 
-    .features h2 {
+    .features h2,
+    .gallery h2,
+    .video-section h2,
+    .contact h2 {
         font-size: 2rem;
         margin-bottom: 30px;
     }
@@ -732,6 +751,18 @@ footer {
         font-size: 2rem;
     }
 
+    .hero-content p {
+        font-size: 1rem;
+    }
+
+    .features h2,
+    .gallery h2,
+    .video-section h2,
+    .contact h2 {
+        font-size: 1.8rem;
+        margin-bottom: 25px;
+    }
+
     .cta-button {
         padding: 0.8rem 1.5rem;
         font-size: 0.9rem;
@@ -751,11 +782,6 @@ footer {
 
     .features {
         padding: 30px 5px;
-    }
-
-    .features h2 {
-        font-size: 1.8rem;
-        margin-bottom: 25px;
     }
 
     .features-grid {
