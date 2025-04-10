@@ -226,4 +226,68 @@ document.querySelectorAll('img').forEach(img => {
     img.style.opacity = '0';
     img.style.transform = 'scale(0.95)';
     img.style.transition = 'all 0.5s ease-out';
+});
+
+// Language handling
+const languageHandler = {
+    currentLang: 'en',
+    supportedLangs: ['en', 'es'],
+
+    init() {
+        // Detect browser language
+        const browserLang = navigator.language || navigator.userLanguage;
+        const detectedLang = browserLang.split('-')[0];
+        
+        // Set initial language
+        this.setLanguage(this.supportedLangs.includes(detectedLang) ? detectedLang : 'en');
+        
+        // Add language switcher to navbar
+        this.addLanguageSwitcher();
+    },
+
+    setLanguage(lang) {
+        if (!this.supportedLangs.includes(lang)) return;
+        
+        this.currentLang = lang;
+        document.documentElement.lang = lang;
+        
+        // Update all translatable elements
+        document.querySelectorAll('[data-en]').forEach(element => {
+            if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+                element.placeholder = element.getAttribute(`data-${lang}`);
+            } else {
+                element.textContent = element.getAttribute(`data-${lang}`);
+            }
+        });
+
+        // Store language preference
+        localStorage.setItem('preferredLanguage', lang);
+    },
+
+    addLanguageSwitcher() {
+        const navLinks = document.querySelector('.nav-links');
+        const langSwitcher = document.createElement('div');
+        langSwitcher.className = 'language-switcher';
+        
+        this.supportedLangs.forEach(lang => {
+            const button = document.createElement('button');
+            button.className = `lang-btn ${lang === this.currentLang ? 'active' : ''}`;
+            button.textContent = lang.toUpperCase();
+            button.onclick = () => this.setLanguage(lang);
+            langSwitcher.appendChild(button);
+        });
+
+        navLinks.appendChild(langSwitcher);
+    }
+};
+
+// Initialize language handler when DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+    languageHandler.init();
+    
+    // Check for stored language preference
+    const storedLang = localStorage.getItem('preferredLanguage');
+    if (storedLang && languageHandler.supportedLangs.includes(storedLang)) {
+        languageHandler.setLanguage(storedLang);
+    }
 }); 

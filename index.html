@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Villa San Antonio - Tu Nuevo Hogar</title>
+    <title data-en="Villa San Antonio - Your New Home" data-es="Villa San Antonio - Tu Nuevo Hogar">Villa San Antonio - Your New Home</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -12,11 +12,11 @@
     <nav class="navbar">
         <div class="logo">Villa San Antonio</div>
         <div class="nav-links">
-            <a href="#inicio">Inicio</a>
-            <a href="#caracteristicas">Características</a>
-            <a href="#galeria">Galería</a>
-            <a href="#video">Video</a>
-            <a href="#contacto">Contacto</a>
+            <a href="#inicio" data-en="Home" data-es="Inicio">Home</a>
+            <a href="#caracteristicas" data-en="Features" data-es="Características">Features</a>
+            <a href="#galeria" data-en="Gallery" data-es="Galería">Gallery</a>
+            <a href="#video" data-en="Video" data-es="Video">Video</a>
+            <a href="#contacto" data-en="Contact" data-es="Contacto">Contact</a>
         </div>
         <div class="menu-btn">
             <i class="fas fa-bars"></i>
@@ -25,40 +25,83 @@
 
     <header id="inicio" class="hero">
         <div class="hero-content">
-            <h1>Tu Hogar de Ensueño</h1>
-            <p>Una residencia única que combina elegancia y comodidad</p>
-            <a href="#contacto" class="cta-button">Agendar Visita</a>
+            <h1 data-en="Your Dream Home" data-es="Tu Hogar de Ensueño">Your Dream Home</h1>
+            <p data-en="A unique residence that combines elegance and comfort" data-es="Una residencia única que combina elegancia y comodidad">A unique residence that combines elegance and comfort</p>
+            <a href="#contacto" class="cta-button" data-en="Schedule Visit" data-es="Agendar Visita">Schedule Visit</a>
         </div>
     </header>
 
     <section id="caracteristicas" class="features">
-        <h2>Características Principales</h2>
+        <h2 data-en="Main Features" data-es="Características Principales">Main Features</h2>
         <div class="features-grid">
             <div class="feature-card">
-                <i class="fas fa-home"></i>
-                <h3>Área Total</h3>
-                <p>250m²</p>
+                <div class="feature-icon">
+                    <i class="fas fa-home"></i>
+                </div>
+                <div class="feature-content">
+                    <h3 data-en="Total Area" data-es="Área Total">Total Area</h3>
+                    <p>700m²</p>
+                </div>
             </div>
             <div class="feature-card">
-                <i class="fas fa-bed"></i>
-                <h3>Habitaciones</h3>
-                <p>4</p>
+                <div class="feature-icon">
+                    <i class="fas fa-building"></i>
+                </div>
+                <div class="feature-content">
+                    <h3 data-en="Built Area" data-es="Área Construida">Built Area</h3>
+                    <p>185m²</p>
+                </div>
             </div>
             <div class="feature-card">
-                <i class="fas fa-bath"></i>
-                <h3>Baños</h3>
-                <p>3</p>
+                <div class="feature-icon">
+                    <i class="fas fa-bed"></i>
+                </div>
+                <div class="feature-content">
+                    <h3 data-en="Bedrooms" data-es="Habitaciones">Bedrooms</h3>
+                    <p>4</p>
+                </div>
             </div>
             <div class="feature-card">
-                <i class="fas fa-car"></i>
-                <h3>Garaje</h3>
-                <p>2 plazas</p>
+                <div class="feature-icon">
+                    <i class="fas fa-bath"></i>
+                </div>
+                <div class="feature-content">
+                    <h3 data-en="Bathrooms" data-es="Baños">Bathrooms</h3>
+                    <p>3</p>
+                </div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-car"></i>
+                </div>
+                <div class="feature-content">
+                    <h3 data-en="Garage" data-es="Garaje">Garage</h3>
+                    <p data-en="140m² or 12 spaces" data-es="140m² o 12 espacios">140m² or 12 spaces</p>
+                </div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-camera"></i>
+                </div>
+                <div class="feature-content">
+                    <h3 data-en="CCTV Cameras" data-es="Circuito cerrado Cámaras">CCTV Cameras</h3>
+                    <p>13</p>
+                </div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-building"></i>
+                </div>
+                <div class="feature-content">
+                    <h3 data-en="+ Apartments" data-es="+ Apartamentos">+ Apartments</h3>
+                    <p>5</p>
+                </div>
             </div>
         </div>
     </section>
 
     <section class="gallery" id="gallery">
-        <h2>Galería de Imágenes</h2>
+        <h2 data-en="Image Gallery" data-es="Galería de Imágenes">Image Gallery</h2>
         <div class="gallery-grid">
             <div class="gallery-item" data-index="0">
                 <img src="https://firebasestorage.googleapis.com/v0/b/shinyhunterapp-d5793.appspot.com/o/house%2Fhouse1.jpg?alt=media&token=bd3101cb-f962-4a82-bd9a-9d844af90549" alt="Imagen de la casa 1" loading="lazy">
@@ -143,13 +186,13 @@
     </section>
 
     <section id="video" class="video-section">
-        <h2>Tour Virtual</h2>
+        <h2 data-en="Virtual Tour" data-es="Tour Virtual">Virtual Tour</h2>
         <div class="video-container">
             <iframe 
                 width="100%" 
                 height="600" 
                 src="https://www.youtube.com/embed/yIGDh01ZCZw" 
-                title="Tour Virtual de la Casa" 
+                title="Virtual Tour of the House" 
                 frameborder="0" 
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                 allowfullscreen>
@@ -158,12 +201,12 @@
     </section>
 
     <section id="contacto" class="contact">
-        <h2>Contacto</h2>
+        <h2 data-en="Contact" data-es="Contacto">Contact</h2>
         <div class="contact-container">
             <form id="contact-form">
                 <div class="form-group">
                     <input type="text" id="name" required>
-                    <label for="name">Nombre</label>
+                    <label for="name" data-en="Name" data-es="Nombre">Name</label>
                 </div>
                 <div class="form-group">
                     <input type="email" id="email" required>
@@ -171,13 +214,13 @@
                 </div>
                 <div class="form-group">
                     <input type="tel" id="phone" required>
-                    <label for="phone">Teléfono</label>
+                    <label for="phone" data-en="Phone" data-es="Teléfono">Phone</label>
                 </div>
                 <div class="form-group">
                     <textarea id="message" required></textarea>
-                    <label for="message">Mensaje</label>
+                    <label for="message" data-en="Message" data-es="Mensaje">Message</label>
                 </div>
-                <button type="submit" class="submit-btn">Enviar Mensaje</button>
+                <button type="submit" class="submit-btn" data-en="Send Message" data-es="Enviar Mensaje">Send Message</button>
             </form>
         </div>
     </section>
@@ -186,15 +229,15 @@
         <div class="footer-content">
             <div class="footer-section">
                 <h3>Villa San Antonio</h3>
-                <p>Tu hogar de ensueño te espera</p>
+                <p data-en="Your dream home awaits" data-es="Tu hogar de ensueño te espera">Your dream home awaits</p>
             </div>
             <div class="footer-section">
-                <h3>Contacto</h3>
+                <h3 data-en="Contact" data-es="Contacto">Contact</h3>
                 <p>Email: info@villasanantonio.com</p>
                 <p>Tel: +34 123 456 789</p>
             </div>
             <div class="footer-section">
-                <h3>Síguenos</h3>
+                <h3 data-en="Follow Us" data-es="Síguenos">Follow Us</h3>
                 <div class="social-links">
                     <a href="#"><i class="fab fa-facebook"></i></a>
                     <a href="#"><i class="fab fa-instagram"></i></a>
@@ -203,7 +246,7 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2024 Villa San Antonio. Todos los derechos reservados.</p>
+            <p data-en="© 2024 Villa San Antonio. All rights reserved." data-es="© 2024 Villa San Antonio. Todos los derechos reservados.">© 2024 Villa San Antonio. All rights reserved.</p>
         </div>
     </footer>
 
