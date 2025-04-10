@@ -56,103 +56,104 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 });
 
 // Gallery Modal Functionality
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', function() {
     const galleryItems = document.querySelectorAll('.gallery-item');
     const modal = document.querySelector('.gallery-modal');
-    const modalImg = modal.querySelector('img');
+    const modalImg = modal.querySelector('.modal-content img');
     const closeBtn = modal.querySelector('.modal-close');
     const prevBtn = modal.querySelector('.modal-prev');
     const nextBtn = modal.querySelector('.modal-next');
     let currentIndex = 0;
 
-    // Open modal
-    galleryItems.forEach((item, index) => {
-        item.addEventListener('click', () => {
-            currentIndex = index;
-            updateModalImage();
-            modal.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        });
-    });
+    function openModal(index) {
+        currentIndex = index;
+        const imgSrc = galleryItems[index].querySelector('img').src;
+        modalImg.src = imgSrc;
+        modal.classList.add('active');
+        document.body.classList.add('modal-open');
+    }
 
-    // Close modal
-    closeBtn.addEventListener('click', () => {
+    function closeModal() {
         modal.classList.remove('active');
-        document.body.style.overflow = '';
-    });
+        document.body.classList.remove('modal-open');
+        modalImg.src = '';
+    }
 
-    // Close modal when clicking outside the image
-    modal.addEventListener('click', (e) => {
-        if (e.target === modal) {
-            modal.classList.remove('active');
-            document.body.style.overflow = '';
-        }
-    });
-
-    // Previous image
-    prevBtn.addEventListener('click', () => {
-        currentIndex = (currentIndex - 1 + galleryItems.length) % galleryItems.length;
-        updateModalImage();
-    });
-
-    // Next image
-    nextBtn.addEventListener('click', () => {
+    function showNextImage() {
         currentIndex = (currentIndex + 1) % galleryItems.length;
-        updateModalImage();
-    });
-
-    // Keyboard navigation
-    document.addEventListener('keydown', (e) => {
-        if (!modal.classList.contains('active')) return;
-
-        switch (e.key) {
-            case 'Escape':
-                modal.classList.remove('active');
-                document.body.style.overflow = '';
-                break;
-            case 'ArrowLeft':
-                currentIndex = (currentIndex - 1 + galleryItems.length) % galleryItems.length;
-                updateModalImage();
-                break;
-            case 'ArrowRight':
-                currentIndex = (currentIndex + 1) % galleryItems.length;
-                updateModalImage();
-                break;
-        }
-    });
-
-    // Update modal image
-    function updateModalImage() {
         const imgSrc = galleryItems[currentIndex].querySelector('img').src;
         modalImg.src = imgSrc;
     }
 
-    // Touch swipe support for mobile
+    function showPrevImage() {
+        currentIndex = (currentIndex - 1 + galleryItems.length) % galleryItems.length;
+        const imgSrc = galleryItems[currentIndex].querySelector('img').src;
+        modalImg.src = imgSrc;
+    }
+
+    // Event Listeners
+    galleryItems.forEach((item, index) => {
+        item.addEventListener('click', () => openModal(index));
+    });
+
+    closeBtn.addEventListener('click', closeModal);
+
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            closeModal();
+        }
+    });
+
+    prevBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        showPrevImage();
+    });
+
+    nextBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        showNextImage();
+    });
+
+    // Keyboard Navigation
+    document.addEventListener('keydown', (e) => {
+        if (!modal.classList.contains('active')) return;
+        
+        switch(e.key) {
+            case 'Escape':
+                closeModal();
+                break;
+            case 'ArrowLeft':
+                showPrevImage();
+                break;
+            case 'ArrowRight':
+                showNextImage();
+                break;
+        }
+    });
+
+    // Touch Events
     let touchStartX = 0;
     let touchEndX = 0;
 
     modal.addEventListener('touchstart', (e) => {
         touchStartX = e.changedTouches[0].screenX;
-    });
+    }, false);
 
     modal.addEventListener('touchend', (e) => {
         touchEndX = e.changedTouches[0].screenX;
         handleSwipe();
-    });
+    }, false);
 
     function handleSwipe() {
         const swipeThreshold = 50;
-        const diff = touchStartX - touchEndX;
-
-        if (Math.abs(diff) > swipeThreshold) {
-            if (diff > 0) {
-                // Swipe left
-                currentIndex = (currentIndex + 1) % galleryItems.length;
+        const swipeDistance = touchEndX - touchStartX;
+        
+        if (Math.abs(swipeDistance) > swipeThreshold) {
+            if (swipeDistance > 0) {
+                showPrevImage();
             } else {
-                // Swipe right
-                currentIndex = (currentIndex - 1 + galleryItems.length) % galleryItems.length;
+                showNextImage();
             }
-            updateModalImage();
         }
     }
 });
