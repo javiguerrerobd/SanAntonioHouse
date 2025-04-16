@@ -24,11 +24,7 @@
 
 html {
     scroll-behavior: smooth;
-}
-
-title {
-    color: var(--white);
-}
+}   
 
 body {
     font-family: 'Poppins', sans-serif;
@@ -63,7 +59,7 @@ body {
     font-family: 'Playfair Display', serif;
     font-size: 1.8rem;
     font-weight: 700;
-    color: var(--primary-color);
+    color: var(--white);
     letter-spacing: 1px;
     text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
 }
@@ -168,7 +164,7 @@ body {
 .contact h2 {
     text-align: center;
     margin-bottom: 50px;
-    color: var(--primary-color);
+    color: var(--white);
     font-size: 2.5rem;
     font-family: 'Playfair Display', serif;
     font-weight: 700;
