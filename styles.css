@@ -26,6 +26,10 @@ html {
     scroll-behavior: smooth;
 }
 
+title {
+    color: var(--white);
+}
+
 body {
     font-family: 'Poppins', sans-serif;
     line-height: 1.6;
